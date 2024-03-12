@@ -5,7 +5,7 @@ from models.Reserva import Reserva
 class DevolucaoDAL:
     def cadastrarDevolucoesDAL(self, devolucao: Devolucao):
         with Conexao() as conexao:
-            sql = 'insert into devolucao (fk_idreserva, data_devolucao) values (?,?)'
+            sql = 'insert into devolucoes (fk_idreserva, data_devolucao) values (?,?)'
             parametros = [devolucao.fk_idreserva, devolucao.data_devolucao]
             
             conexao.execute (sql, parametros)
@@ -14,7 +14,7 @@ class DevolucaoDAL:
     
     def listar (self):
         with Conexao() as conexao:
-            sql = 'select fk_idreserva, data_devolucao,	data_reserva, nome, titulo from	devolucao inner join reserva on devolucao.fk_idreserva = reserva.id, usuario on reserva.fk_nome = usuario.id, livro on reserva.fk_titulo = livro.id'
+            sql = 'select fk_idreserva, data_devolucao,	data_reserva, nome, titulo from	devolucoes inner join reservas on devolucoes.fk_idreserva = reservas.id, usuarios on reservas.fk_nome = usuarios.id, livros on reservas.fk_titulo = livros.id'
             conexao.execute(sql)
             
             linhas = conexao.fetchall()
