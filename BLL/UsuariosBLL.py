@@ -29,6 +29,12 @@ class UsuariosBLL:
             print(f"Erro ao cadastrar um Usuario. Erro: {erro}")
         return sucesso
     
+    def obter(self, codigo: int):
+        try:
+            return UsuariosDAL().obter(codigo)
+        except Exception as erro:
+            print(f"Erro ao obter um livro, Erro: {erro}")
+    
     def listar(self):
         try:
             return UsuariosDAL().listar()
@@ -52,13 +58,13 @@ class UsuariosBLL:
                 print("Email é obrigatório!")
             elif usuario.telefone == "":
                 print("Telefone é obrigatória!")
-            elif usuario.endereço == "":
+            elif usuario.endereco == "":
                 print("Endereço é obrigatório!")
             else:
                 podeContinuar = True
             
             if podeContinuar is True:
-                UsuariosDAL.alterar(usuario)
+                UsuariosDAL().alterar(usuario)
                 sucesso = True
                 
         except Exception as erro:

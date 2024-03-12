@@ -10,7 +10,29 @@ def cadastroUsuarios():
     ...
 
 def alterarLivros():
-    ...
+    
+    livros = LivrosBLL().listar()
+
+    if livros:
+        for livro in livros:
+            print(livro)
+            print("")
+    codigo = int(input('Qual livro deseja alterar? '))
+    
+    livro = LivrosBLL().obter(codigo)
+    
+    livro.titulo = input('Qual o titulo? ')
+    livro.subtitulo = input('Qual o subtitulo? ')
+    livro.ano = input('Qual o ano? ')
+    livro.autor = input('Qual o autor? ')
+    livro.editora = input('Qual a editora? ')
+    livro.categoria = input('Qual a categoria? ')
+    livro.idioma = input('Qual o idioma? ')
+    livro.qtde = input('Qual a quantidade? ')
+    
+    LivrosBLL().alterar(livro)
+    
+    print('Sucesso ao alterar o livro!')
 
 def alterarUsuarios():
     
@@ -34,6 +56,8 @@ def alterarUsuarios():
     
     UsuariosBLL().alterar(usuario)
 
+    print('Sucesso ao alterar o usuário!')
+    
 def cadastrarReserva():
     ...
 
