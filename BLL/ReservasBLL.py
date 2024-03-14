@@ -26,3 +26,15 @@ class ReservasBLL:
         except Exception as erro:
             print(f"Erro ao cadastrar um Livro. Erro: {erro}")
         return sucesso
+    
+    def listar(self):
+        try:
+            return ReservasDAL().listar()
+        except Exception as erro:
+            print(f"Erro ao listar as reservas, Erro: {erro}")
+            
+    def obter(self, codigo: int):
+        try:
+            return ReservasDAL().obter(codigo)
+        except Exception as erro:
+            print(f"Erro ao obter uma reserva, Erro: {erro}")

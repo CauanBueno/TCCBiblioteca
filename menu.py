@@ -62,7 +62,10 @@ def cadastrarReserva():
     ...
 
 def cadastrarDevolucao():
-    ...
+    
+    ReservasBLL().listar()
+    
+    codigo = input("Qual devoluçao deseja fazer?")
 
 def relatorioLivros():
     devolucao = DevolucaoBLL().listar()
