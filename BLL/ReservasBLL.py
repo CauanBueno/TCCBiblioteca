@@ -17,7 +17,7 @@ class ReservasBLL:
             elif data_reserva is None:
                 print("Campo Data da Reserva, é obrigatório.")
             elif data_prevdevol is None:
-                print("Campo Data de Devolução, é obrigatório.")
+                print("Campo Data Prevista de Devolução, é obrigatório.")
             else:
                 sucesso = True
                 reserva = Reserva(0, fk_nome, fk_titulo, data_reserva, data_prevdevol)
