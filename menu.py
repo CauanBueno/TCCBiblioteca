@@ -68,7 +68,7 @@ def cadastrarDevolucao():
     codigo = input("Qual devoluçao deseja fazer?")
 
 def relatorioLivros():
-    devolucao = DevolucaoBLL().listar()
+    devolucao = DevolucaoBLL().listarRelatorio()
     if devolucao:
         for devolucao in devolucao:
             print(devolucao)
