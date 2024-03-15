@@ -32,7 +32,16 @@ def alterarLivros():
     
     LivrosBLL().alterar(livro)
     
-    print('Sucesso ao alterar o livro!')
+    print ("")
+    print ('Livro alterado com sucesso!')
+    print ("")
+    print ("")
+    print ("")
+    print ("=" *50, "Reiniciando...", "=" *50)
+    print ("")
+    
+    while iniciar() == False:
+        print ("")
 
 def alterarUsuarios():
     
@@ -55,8 +64,16 @@ def alterarUsuarios():
     usuario.endereco = input('Qual o endereço? ')
     
     UsuariosBLL().alterar(usuario)
-
-    print('Sucesso ao alterar o usuário!')
+    print ("")
+    print ('Usuário alterado com sucesso!')
+    print ("")
+    print ("")
+    print ("")
+    print ("=" *50, "Reiniciando...", "=" *50)
+    print ("")
+    
+    while iniciar() == False:
+        print ("")
     
 def cadastrarReserva():
     ...
@@ -68,10 +85,16 @@ def cadastrarDevolucao():
     codigo = input("Qual devoluçao deseja fazer?")
 
 def relatorioLivros():
-    devolucao = DevolucaoBLL().listarRelatorio()
-    if devolucao:
-        for devolucao in devolucao:
-            print(devolucao)
+    relatorios = RelatorioBLL().listarRelatorioBLL(fk_nome)
+    if relatorios:
+        for relatorio in relatorios:
+            print (relatorio)
+        print ("")
+        print ("")
+        print ("=" *50, "Reiniciando...", "=" *50)
+        print ("")
+    while iniciar() == False:
+        print ("")
 
 
 def iniciar():
