@@ -27,3 +27,20 @@ class DevolucaoDAL:
                     devolucao = Devolucao, Reserva (fk_idreserva, data_devolucao, data_reserva, nome, titulo)
                     
                 return devolucao
+
+
+class Relatorio:
+    def listar (self):
+        with Conexao() as conexao:
+            sql = 'select fk_idreserva, data_devolucao, data_reserva, nome, titulo from devolucao'
+            conexao.execute(sql)
+            linhas = conexao.fetchall()
+            
+            if linhas:
+                relatorio: list [Relatorio] = []
+                
+                for linha in linhas:
+                    id, fk_idreserva, data_devolucao, data_reserva, nome, titulo = linha
+                    relatorio = Devolucao (id, fk_idreserva, data_devolucao, data_reserva, nome, titulo)
+                    
+                return relatorio
