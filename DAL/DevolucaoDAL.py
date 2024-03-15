@@ -29,18 +29,21 @@ class DevolucaoDAL:
                 return devolucao
 
 
-class Relatorio:
-    def listarRelatorio(self):
+class RelatorioDAL:
+    def listarRelarorioDAL(self, fk_nome: Reserva, fk_titulo: Reserva, data_reserva: Reserva, data_prevdevol: Reserva, data_devolucao: Devolucao):
         with Conexao() as conexao:
-            sql = 'select fk_idreserva, data_devolucao, data_reserva, nome, titulo from devolucao'
-            conexao.execute(sql)
-            linhas = conexao.fetchall()
+            sql = "select nome 'Nome Cliente:', titulo 'Titulo Livro:', data_reserva 'Data da reserva:', data_prevdevol 'Data prevista de devolução:', data_devolucao 'Data real devolução:' from reservas left join devolucoes on devolucoes.fk_idreservas = reservas.id, usuarios on reservas.fk_nome = usuarios.id, livros on reservas.fk_titulo = livros.id"
+            parametros = [fk_nome, fk_titulo, data_reserva, data_prevdevol, data_devolucao]
+            conexao.execute(sql, parametros)
+            linhas = conexao.fetchmany()
             
             if linhas:
-                relatorio: list [Relatorio] = []
+                relatorios: list [Reserva, Devolucao] = []
                 
                 for linha in linhas:
-                    id, fk_idreserva, data_devolucao, data_reserva, nome, titulo = linha
-                    relatorio = Devolucao (id, fk_idreserva, data_devolucao, data_reserva, nome, titulo)
+                    fk_nome, fk_titulo, data_reserva, data_prevdevol, data_devolucao = linha
+                    relatorio = Reserva (fk_nome, fk_titulo, data_reserva, data_prevdevol), Devolucao (data_devolucao)
                     
-                return relatorio
+                    relatorios.append(relatorio)
+                
+                return relatorios
