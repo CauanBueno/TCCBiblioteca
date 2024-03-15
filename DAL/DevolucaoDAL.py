@@ -14,23 +14,23 @@ class DevolucaoDAL:
     
     def listar (self):
         with Conexao() as conexao:
-            sql = 'select fk_idreserva, data_devolucao,	data_reserva, nome, titulo from	devolucoes inner join reservas on devolucoes.fk_idreserva = reservas.id, usuarios on reservas.fk_nome = usuarios.id, livros on reservas.fk_titulo = livros.id'
+            sql = 'select * from devolucoes'
             conexao.execute(sql)
             
             linhas = conexao.fetchall()
             
             if linhas:
-                devolucao: list [Devolucao, Reserva] = []
+                devolucao: list [Devolucao] = []
                 
                 for linha in linhas:
-                    fk_idreserva, data_devolucao, data_reserva, nome, titulo = linha
-                    devolucao = Devolucao, Reserva (fk_idreserva, data_devolucao, data_reserva, nome, titulo)
+                    fk_idreserva, data_devolucao = linha
+                    devolucao = Devolucao (fk_idreserva, data_devolucao)
                     
                 return devolucao
 
 
 class Relatorio:
-    def listar (self):
+    def listarRelatorio(self):
         with Conexao() as conexao:
             sql = 'select fk_idreserva, data_devolucao, data_reserva, nome, titulo from devolucao'
             conexao.execute(sql)
