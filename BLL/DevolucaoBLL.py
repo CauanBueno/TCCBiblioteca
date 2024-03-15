@@ -28,3 +28,9 @@ class DevolucaoBLL:
         except Exception as erro:
             print(f"Erro ao executar o Relatório. Erro: {erro}")
 
+    def listar(self):
+        try:
+            return DevolucaoDAL().listarRelatorio()
+        except Exception as erro:
+            print(f"Erro ao executar o Relatório. Erro: {erro}")
+
