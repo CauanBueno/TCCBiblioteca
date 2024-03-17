@@ -84,11 +84,21 @@ def cadastrarDevolucao():
     
     codigo = input("Qual devoluçao deseja fazer?")
 
-def relatorioLivros():
-    relatorios = RelatorioBLL().listarRelatorioBLL(fk_nome)
-    if relatorios:
-        for relatorio in relatorios:
-            print (relatorio)
+def relatoriotodos():
+    print(" > Reservas realizadas: ")
+    print("")
+    reservas = ReservasBLL().listar()
+    if reservas:
+        for reserva in reservas:
+            print(reserva)
+    print("")
+    print(" > Devoluções efetuadas: ")
+    print("")
+    devolucoes = DevolucaoBLL().listar()
+    if devolucoes:
+        for devolucao in devolucoes:
+            print(devolucao)
+        
         print ("")
         print ("")
         print ("=" *50, "Reiniciando...", "=" *50)
