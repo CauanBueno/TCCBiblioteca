@@ -85,14 +85,14 @@ def cadastrarDevolucao():
     codigo = input("Qual devoluçao deseja fazer?")
 
 def relatoriotodos():
-    print(" > Reservas realizadas: ")
+    print(" > Livros Emprestados: ")
     print("")
     reservas = ReservasBLL().listar()
     if reservas:
         for reserva in reservas:
             print(reserva)
     print("")
-    print(" > Devoluções efetuadas: ")
+    print(" > Livros Devolvidos: ")
     print("")
     devolucoes = DevolucaoBLL().listar()
     if devolucoes:
