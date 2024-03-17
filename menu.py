@@ -1,3 +1,4 @@
+from datetime import date
 from BLL.LivrosBLL import LivrosBLL
 from BLL.UsuariosBLL import UsuariosBLL
 from BLL.ReservasBLL import ReservasBLL
@@ -80,9 +81,18 @@ def cadastrarReserva():
 
 def cadastrarDevolucao():
     
-    ReservasBLL().listar()
+    reservas = ReservasBLL().listar()
+    if reservas:
+        for reserva in reservas:
+            print(reserva)
     
-    codigo = input("Qual devoluçao deseja fazer?")
+    codigo = int(input("Qual devoluçao deseja fazer?"))
+    hoje = date.today()
+    devolucao = (codigo, hoje)
+    
+    DevolucaoBLL().cadastrarDevolucaoBLL(codigo, hoje)
+    
+    
 
 def relatoriotodos():
     print(" > Livros Emprestados: ")
