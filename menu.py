@@ -140,7 +140,7 @@ def iniciar():
             case 6:
                 cadastrarDevolucao()
             case 7:
-                relatorioLivros()
+                relatoriotodos()
             case 8:
                 print ("Saindo...")
                 print ("")
