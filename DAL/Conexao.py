@@ -15,7 +15,6 @@ class Conexao:
         self.conexao = sqlite3.connect(__BANCO)
         self.cursor = self.conexao.cursor()
         
-        print("Conexao Aberta")
         
         return self.cursor
     
@@ -24,6 +23,3 @@ class Conexao:
         self.conexao.commit()  # Salva as alterações no Banco
         self.cursor.close()    # Fechar o cursor (Como se eu não quisesse mais mexer no arquivo)
         self.conexao.close()   # Encerra a conexao (Como se tivesse fechando o arquivo)
-        
-        print("Conexao Fechada")
-        
