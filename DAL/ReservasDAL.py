@@ -44,3 +44,23 @@ class ReservasDAL:
                 reserva = Reserva(id, fk_nome, fk_titulo, data_reserva, data_prevdevol)
 
                 return reserva
+            
+    def atrasados(self):
+        
+        with Conexao() as conexao:
+            sql = 'select * from reservas '
+            
+            conexao.execute(sql)
+            linhas = conexao.fetchall()
+            
+            if linhas:
+                
+                reservas: List[Reserva] = []
+                
+                for linha in linhas:
+                    id, fk_nome, fk_titulo, data_reserva, data_prevdevol = linha
+                    reserva = Reserva(id, fk_nome, fk_titulo, data_reserva, data_prevdevol)
+                
+                    reservas.append(reserva)
+                
+                return reservas
