@@ -18,6 +18,14 @@ def cadastroLivros():
     
     LivrosBLL().cadastrarLivrosBLL(titulo, subtitulo, ano, autor, editora, categoria, idioma,quantidade)
     
+    print ("")
+    print ('Livro cadastrado com sucesso')
+    print ("")
+    print ("")
+    print ("")
+    print ("=" *50, "Reiniciando...", "=" *50)
+    print ("")
+    
     
     
         
@@ -32,6 +40,14 @@ def cadastroUsuarios():
     endereco = input("Qual o endereço? ")
 
     UsuariosBLL().cadastrarUsuariosBLL(nome, documento, date, email, telefone, endereco)
+    
+    print ("")
+    print ('Usuário cadastrado com sucesso')
+    print ("")
+    print ("")
+    print ("")
+    print ("=" *50, "Reiniciando...", "=" *50)
+    print ("")
 
 def alterarLivros():
     
@@ -129,6 +145,14 @@ def cadastrarReserva():
     dev = data_entrega
     
     ReservasBLL().cadastrarReservasBLL(codigo1 , codigo2, data, dev)
+    
+    print ("")
+    print ('cadastro realizado com sucesso!')
+    print ("")
+    print ("")
+    print ("")
+    print ("=" *50, "Reiniciando...", "=" *50)
+    print ("")
     
 
 
