@@ -4,7 +4,7 @@ from datetime import date
 
 
 class UsuariosBLL:
-    def cadastrarUsuariosBLL(self, nome: str, documento: str, data_nascimento: date, email: str, telefone: str, endereco: str):
+    def cadastrarUsuariosBLL(self, nome: str, documento: int, data_nascimento: date, email: str, telefone: str, endereco: str):
         sucesso = False
         
         try:

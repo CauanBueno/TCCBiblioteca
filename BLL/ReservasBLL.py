@@ -6,7 +6,7 @@ from datetime import date
 
 @dataclass
 class ReservasBLL:
-    def cadastrarReservasBLL (self, fk_nome: int, fk_titulo: int, data_reserva: date, data_prevdevol: date):
+    def cadastrarReservasBLL (self, fk_nome: int, fk_titulo: int, data_reserva: date, data_prevdevol: date,):
         sucesso = False
         
         try:

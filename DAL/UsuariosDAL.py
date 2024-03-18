@@ -5,7 +5,7 @@ from models.Usuario import Usuario
 class UsuariosDAL:
     def cadastrarUsuariosDAL(self, usuario: Usuario):
         with Conexao() as conexao:
-            sql = 'insert into usuario (nome, documento, data_nascimento, email, telefone, endereco) values (?,?,?,?,?,?)'
+            sql = 'insert into usuarios (nome, documento, data_nascimento, email, telefone, endereco) values (?,?,?,?,?,?)'
             parametros = [usuario.nome, usuario.documento, usuario.data_nascimento, usuario.email, usuario.telefone, usuario.endereco]
             
             conexao.execute(sql, parametros)

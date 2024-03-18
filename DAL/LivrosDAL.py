@@ -5,7 +5,7 @@ from models.Livro import Livro
 class LivrosDAL:
     def cadastrarLivrosDAL(self, livro: Livro):
         with Conexao() as conexao:
-            sql = 'insert into livro (titulo, subtitulo, ano, autor, editora, categoria, idioma, qtde) values (?, ?, ?, ?, ?, ?, ?, ?)'
+            sql = 'insert into livros (titulo, subtitulo, ano, autor, editora, categoria, idioma, qtde) values (?, ?, ?, ?, ?, ?, ?, ?)'
             parametros = [ livro.titulo, livro.subtitulo, livro.ano, livro.autor, livro.editora, livro.categoria, livro.idioma, livro.qtde ]
             
             conexao.execute(sql, parametros)

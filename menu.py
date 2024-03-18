@@ -3,12 +3,35 @@ from BLL.LivrosBLL import LivrosBLL
 from BLL.UsuariosBLL import UsuariosBLL
 from BLL.ReservasBLL import ReservasBLL
 from BLL.DevolucaoBLL import DevolucaoBLL
+from datetime import date
 
 def cadastroLivros():
-    ...
+    
+    titulo = input("qual o titulo do livro ")
+    subtitulo = input("Qual o subtitulo? ")
+    ano = int(input("Qual o ano? "))
+    autor = input("Qual o autor? ")
+    editora = input("Qual a editora? ")
+    categoria = input("Qual a categoria? ")
+    idioma = input("Qual o idioma? ")
+    quantidade = int(input("Qual a quantidade? "))    
+    
+    LivrosBLL().cadastrarLivrosBLL(titulo, subtitulo, ano, autor, editora, categoria, idioma,quantidade)
+    
+    
+    
+        
 
 def cadastroUsuarios():
-    ...
+    nome = input("qual o nome? ")
+    documento = int(input("numero do documento? "))
+    data_nascimento = input("data de nascimento? ")
+    date = data_nascimento
+    email = input("Qual o email? ")
+    telefone = input("Qual o telefone? ")
+    endereco = input("Qual o endereço? ")
+
+    UsuariosBLL().cadastrarUsuariosBLL(nome, documento, date, email, telefone, endereco)
 
 def alterarLivros():
     
@@ -77,7 +100,37 @@ def alterarUsuarios():
         print ("")
     
 def cadastrarReserva():
-    ...
+    
+    
+    
+    livros = LivrosBLL().listar()
+    usuarios = UsuariosBLL().listar()
+    
+    if usuarios:
+        for usuario in usuarios:
+            print(usuario)
+            print("")
+    codigo1 = int(input('Qual e o cliente? '))
+    
+
+    if livros:
+        for livro in livros:
+            print(livro)
+            print("")
+    codigo2 = int(input('Qual livro deseja reservar? '))
+    
+    
+    
+
+    data_reserva = input("data de reserva? ")
+    data = data_reserva
+    
+    data_entrega = input("data de entrega?  ")
+    dev = data_entrega
+    
+    ReservasBLL().cadastrarReservasBLL(codigo1 , codigo2, data, dev)
+    
+
 
 def cadastrarDevolucao():
     
