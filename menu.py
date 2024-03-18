@@ -1,3 +1,4 @@
+from datetime import date
 from BLL.LivrosBLL import LivrosBLL
 from BLL.UsuariosBLL import UsuariosBLL
 from BLL.ReservasBLL import ReservasBLL
@@ -32,7 +33,16 @@ def alterarLivros():
     
     LivrosBLL().alterar(livro)
     
-    print('Sucesso ao alterar o livro!')
+    print ("")
+    print ('Livro alterado com sucesso!')
+    print ("")
+    print ("")
+    print ("")
+    print ("=" *50, "Reiniciando...", "=" *50)
+    print ("")
+    
+    while iniciar() == False:
+        print ("")
 
 def alterarUsuarios():
     
@@ -55,20 +65,56 @@ def alterarUsuarios():
     usuario.endereco = input('Qual o endereço? ')
     
     UsuariosBLL().alterar(usuario)
-
-    print('Sucesso ao alterar o usuário!')
+    print ("")
+    print ('Usuário alterado com sucesso!')
+    print ("")
+    print ("")
+    print ("")
+    print ("=" *50, "Reiniciando...", "=" *50)
+    print ("")
+    
+    while iniciar() == False:
+        print ("")
     
 def cadastrarReserva():
     ...
 
 def cadastrarDevolucao():
-    ...
+    
+    reservas = ReservasBLL().listar()
+    if reservas:
+        for reserva in reservas:
+            print(reserva)
+    
+    codigo = int(input("Qual devoluçao deseja fazer?"))
+    hoje = date.today()
+    devolucao = (codigo, hoje)
+    
+    DevolucaoBLL().cadastrarDevolucaoBLL(codigo, hoje)
+    
+    
 
-def relatorioLivros():
-    devolucao = DevolucaoBLL().listar()
-    if devolucao:
-        for devolucao in devolucao:
+def relatoriotodos():
+    print(" > Livros Emprestados: ")
+    print("")
+    reservas = ReservasBLL().listar()
+    if reservas:
+        for reserva in reservas:
+            print(reserva)
+    print("")
+    print(" > Livros Devolvidos: ")
+    print("")
+    devolucoes = DevolucaoBLL().listar()
+    if devolucoes:
+        for devolucao in devolucoes:
             print(devolucao)
+        
+        print ("")
+        print ("")
+        print ("=" *50, "Reiniciando...", "=" *50)
+        print ("")
+    while iniciar() == False:
+        print ("")
 
 
 def iniciar():
@@ -104,7 +150,7 @@ def iniciar():
             case 6:
                 cadastrarDevolucao()
             case 7:
-                relatorioLivros()
+                relatoriotodos()
             case 8:
                 print ("Saindo...")
                 print ("")

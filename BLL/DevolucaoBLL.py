@@ -19,7 +19,7 @@ class DevolucaoBLL:
                 devolucao = Devolucao(0, fk_idreserva, data_devolucao)
                 DevolucaoDAL().cadastrarDevolucoesDAL(devolucao)
         except Exception as erro:
-                print(f"Erro ao cadastrar um Livro. Erro: {erro}")
+                print(f"Erro ao cadastrar uma devolucão. Erro: {erro}")
         return sucesso
     
     def listar(self):
