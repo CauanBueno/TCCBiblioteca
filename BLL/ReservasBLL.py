@@ -39,8 +39,4 @@ class ReservasBLL:
         except Exception as erro:
             print(f"Erro ao obter uma reserva, Erro: {erro}")
             
-    def atrasados(self):
-        try:
-            return ReservasDAL().atrasados()
-        except Exception as erro:
-            print(f"Erro ao listar as devoluções com atraso, Erro: {erro}")
+
