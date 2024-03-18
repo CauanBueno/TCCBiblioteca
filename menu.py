@@ -146,6 +146,13 @@ def cadastrarReserva():
     
     ReservasBLL().cadastrarReservasBLL(codigo1 , codigo2, data, dev)
     
+    
+    livro = LivrosBLL().obter(codigo2)
+    
+    livro.qtde = livro.qtde - 1
+    
+    LivrosBLL().alterar(livro)
+    
     print ("")
     print ('cadastro realizado com sucesso!')
     print ("")
@@ -169,7 +176,16 @@ def cadastrarDevolucao():
     
     DevolucaoBLL().cadastrarDevolucaoBLL(codigo, hoje)
     
+    ReservasBLL().obter(codigo)
     
+    livroId = reserva.fk_titulo
+    
+    livro = LivrosBLL().obter(livroId)
+    
+    livro.qtde = livro.qtde + 1
+    
+    LivrosBLL().alterar(livro)
+
 
 def relatoriotodos():
     print(" > Livros Emprestados: ")
